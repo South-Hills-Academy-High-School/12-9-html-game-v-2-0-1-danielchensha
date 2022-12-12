@@ -41,6 +41,55 @@ const server = http.createServer((req, res) => {
           responseJSON.id = "problem1.html"
         }
       }
+      
+      if(bodyJSONid==="answer2") {
+        if(bodyJSONdata==="Argentina") {
+          responseJSON.dialog = "correct!"
+          responseJSON.id = "problem3.html"
+        } else {          
+          responseJSON.dialog = "incorrect!"
+          responseJSON.id = "problem2.html"
+        }
+      }
+
+      if(bodyJSONid==="answer3") {
+        if(bodyJSONdata==="No") {
+          responseJSON.dialog = "correct!"
+          responseJSON.id = "problem4.html"
+        } else {          
+          responseJSON.dialog = "incorrect!"
+          responseJSON.id = "problem3.html"
+        }
+      }
+      
+      if(bodyJSONid==="answer4") {
+        if(bodyJSONdata==="4") {
+          responseJSON.dialog = "correct!"
+          responseJSON.id = "problem4.html"
+        } else {          
+          responseJSON.dialog = "incorrect!"
+          responseJSON.id = "problem3.html"
+        }
+      }
+      if(bodyJSONid==="answer4") {
+        if(bodyJSONdata==="4") {
+          responseJSON.dialog = "correct!"
+          responseJSON.id = "problem5.html"
+        } else {          
+          responseJSON.dialog = "incorrect!"
+          responseJSON.id = "problem4.html"
+        }
+      }
+      
+      if(bodyJSONid==="answer5") {
+        if(bodyJSONdata==="Yes") {
+          responseJSON.dialog = "correct!"
+          responseJSON.id = "Congrats.html"
+        } else {          
+          responseJSON.dialog = "incorrect!"
+          responseJSON.id = "problem5.html"
+        }
+      }
 
       /** Do not go beyond this section for now */
       res.end(JSON.stringify(responseJSON))
@@ -67,7 +116,9 @@ const server = http.createServer((req, res) => {
         fs.createReadStream('problem4.html').pipe(res)
     } else if(url ==='/problem5.html')  {
         fs.createReadStream('problem5.html').pipe(res)
-    } else {
+    } else if(url ==='/Congrats.html')  {
+      fs.createReadStream('Congrats.html').pipe(res)
+  } else {
         res.write('Doesn\'t exist'); 
         res.end(); 
     }
